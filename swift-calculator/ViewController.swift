@@ -24,4 +24,7 @@ class ViewController: UIViewController {
             userInput = true
         }
     }
+    @IBAction func enter() {
+        userInput = false
+    }
 }
