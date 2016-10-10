@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     var userInput: Bool = false
 
-    @IBAction func appendDigit(sender: UIButton) {
+    @IBAction func appendDigit(_ sender: UIButton) {
         let digit = sender.currentTitle
         if userInput {
         display.text = display.text! + digit!
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func operate(sender: UIButton) {
+    @IBAction func operate(_ sender: UIButton) {
         let operation = sender.currentTitle!
         if userInput {
             enter()
@@ -40,14 +40,14 @@ class ViewController: UIViewController {
         }
     }
     
-    func performOperation(operation: (Double, Double) -> Double) {
+    func performOperation(_ operation: (Double, Double) -> Double) {
         if operandStack.count >= 2 {
             displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
             enter()
         }
     }
     
-    func performSqrt(operation: Double -> Double) {
+    func performSqrt(_ operation: (Double) -> Double) {
         if operandStack.count >= 1 {
             displayValue = operation(operandStack.removeLast())
             enter()
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     
     var displayValue: Double {
         get {
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            return NumberFormatter().number(from: display.text!)!.doubleValue
         }
         set{
             display.text = "\(newValue)"
